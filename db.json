@@ -1,0 +1,19 @@
+{
+    "produtos": [
+        {
+            "id": 1,
+            "nome": "notebook i7",
+            "preco": 5500
+        },
+        {
+            "id": 2,
+            "nome": "notebook i5",
+            "preco": 4500
+        },
+        {
+            "id": 3,
+            "nome": "teclado",
+            "preco": 100
+        }
+    ]
+}
