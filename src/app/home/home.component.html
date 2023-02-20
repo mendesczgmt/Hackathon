@@ -1,2 +1,27 @@
-<p>home works!</p>
 
+<table class="table table-striped" *ngIf="carregar; else carregando">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">nome</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Excluir</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr scope="row" *ngFor="let p of produtos">
+            <td>{{p.id}}</td>
+            <td>{{p.nome}}</td>
+            <td>{{p.preco | currency:'BRL'}}</td>
+            <td><button type="button" class="btn btn-danger" (click)="excluirIntem(p.id)">Excluir</button></td>
+        </tr>
+    </tbody>
+  </table>
+
+  <ng-template #carregando>
+    <div class="d-flex align-items-center">
+        <strong>Loading...</strong>
+        <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+    </div>
+  </ng-template>
+  

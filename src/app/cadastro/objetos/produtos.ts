@@ -1,6 +1,6 @@
 export class Produtos {
     
-    constructor(public nome: String, public preco: number, private desconto: number = 10) {
+    constructor(public id: number, public nome: String, public preco: number, private desconto: number = 10) {
 
     }
 
