@@ -14,6 +14,12 @@
       "id": 3,
       "nome": "teclado",
       "preco": 99.99
+    },
+    {
+      "id": 4,
+      "nome": "mouse gamer",
+      "preco": "125.50",
+      "desconto": 10
     }
   ]
 }

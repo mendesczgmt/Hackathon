@@ -15,6 +15,7 @@ export class CadastroComponent {
   
   id: any
   produto: Produtos = new Produtos(0, '', 0)
+  textoBotao: String = "Salvar"
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -26,17 +27,38 @@ export class CadastroComponent {
     this.activatedRoute.params.subscribe(parametros => {
 
       if(parametros['id']){
+        this.textoBotao = "Editar"
         this.id = parametros['id']
-      }
+        this.prodServices.buscarIntemID(this.id).subscribe(prod => {
+          this.produto = prod
+        }
+        )
+    }
     })
   }
 
   adicionar = () =>{
-    this.prodServices.adicionarIntem(this.produto).subscribe(
-      success => console.log("salvou"),
+    if(this.textoBotao == 'Salvar') {
+      this.prodServices.adicionarIntem(this.produto).subscribe(
+        success => this.navegar('home'),
+        error => console.log("deu ruim"),
+        () => console.log('Requisição completa'))
+         }
+    else {
+      this.editar()
+    }
+  }
+
+  editar =() =>{
+    this.prodServices.editarIntem(this.produto).subscribe(
+      success => this.navegar('home'),
       error => console.log("deu ruim"),
       () => console.log('Requisição completa'))
-      this.router.navigate(['home'])
+      
+  }
+
+  navegar = (rota: any) => {
+    this.router.navigate([rota])
   }
 
 }

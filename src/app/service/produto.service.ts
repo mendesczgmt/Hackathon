@@ -20,7 +20,15 @@ export class ProdutoService {
     return this.$http.delete(`${this.API}/${id}`)
   } 
 
-  adicionarIntem(prod: Produtos){
+  adicionarIntem(prod: Produtos) {
     return this.$http.post(this.API, prod)
+  }
+
+  editarIntem(prod: Produtos) {
+    return this.$http.put(`${this.API}/${prod.id}`, prod)
+  }
+
+  buscarIntemID(id:any) {
+    return this.$http.get<Produtos>(`${this.API}/${id}`)
   }
 }
